@@ -8,7 +8,7 @@ and keeping the Python chops nice and sharp!
 | Day | Name | Solution | Stars Earned |
 | :------: | :-------------------: | :--------------: | :--------------: |
 | 01 | [Trebuchet?!](https://adventofcode.com/2023/day/1) | [01](solution_code/day01.py) | ★★ |
-| 02 |  |  | ☆☆ |
+| 02 | [Cube Conundrum](https://adventofcode.com/2023/day/2) | [02](solution_code/day02.py) | ★★ |
 | 03 |  |  | ☆☆ |
 | 04 |  |  | ☆☆ |
 | 05 |  |  | ☆☆ |
