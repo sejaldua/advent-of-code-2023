@@ -3,59 +3,71 @@ from aocd.models import Puzzle
 from utils import get_test_input, write_solution
 
 """
-Day 1: Trebuchet?!
+Day 2: Cube Conundrum
 """
 
-puzzle = Puzzle(year=2023, day=1)
+puzzle = Puzzle(year=2023, day=2)
 
 """
 Part A: 
-Sum up the first and last digit in each line
+The Elf would first like to know which games would have been possible 
+if the bag contained only 12 red cubes, 13 green cubes, and 14 blue cubes?
+
+Example Games:
+Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
+Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
 """
 
 def part_a(test=False):
-    data = get_test_input('day01/a') if test else Puzzle(year=2023, day=1).input_data
+    data = get_test_input('day02/a') if test else puzzle.input_data
     lines = data.split("\n")
-    ans = 0
-    for l in lines:
-        nums = [str(x) for x in l if x.isdigit()]
-        num = int(nums[0] + nums[-1])
-        ans += num
-    return ans
-    
+    game_ids = []
+    for i, game in enumerate(lines):
+        _, game = game.split(': ')
+        valid = True
+        handfuls = game.split('; ')
+        for handful in handfuls:
+            balls = handful.split(', ')
+            for ball_color in balls:
+                num = int(''.join([x for x in ball_color if x.isdigit()]))
+                if ('red' in ball_color and num > 12) or ('green' in ball_color and num > 13) or ('blue' in ball_color and num > 14):
+                    valid = False
+        if valid:
+            game_ids.append(i+1)
+    return sum(game_ids)
 
-assert(part_a(test=True) == 142)
+assert(part_a(test=True) == 8)
 answer_a = part_a()
-write_solution('day01', 'a', answer_a)
+write_solution('day02', 'a', answer_a)
 puzzle.answer_a = answer_a  
 
 
 """
 Part B:
-Same problem as A but now 'one', 'two', 'three', 'four', 'five',
-'six', 'seven', 'eight', and 'nine' are also valid digits
+In each game you played, what is the fewest number of cubes of each color that could have been 
+in the bag to make the game possible?
 """
 
 def part_b(test=False):
-    data = get_test_input('day01/b') if test else Puzzle(year=2023, day=1).input_data
+    data = get_test_input('day02/b') if test else puzzle.input_data
     lines = data.split("\n")
     ans = 0
-    NUMS = {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9}
-    for l in lines:
-        nums = []
-        for i, x in enumerate(l):
-            if x.isdigit():
-                nums.append(str(x))
-                continue
-            else:
-                for k, v in NUMS.items():
-                    if l[i:i+len(k)] == k:
-                        nums.append(str(v))
-        num = int(nums[0] + nums[-1])
-        ans += num
+    for i, game in enumerate(lines):
+        mins = {'red': 0, 'green': 0, 'blue': 0}
+        _, game = game.split(': ')
+        handfuls = game.split('; ')
+        for handful in handfuls:
+            balls = handful.split(', ')
+            for ball_color in balls:
+                num = int(''.join([x for x in ball_color if x.isdigit()]))
+                for color in mins.keys():
+                    if color in ball_color and num >= mins[color]:
+                        mins[color] = num
+        ans += mins['red'] * mins['green'] * mins['blue']
+                
     return ans
 
-assert(part_b(test=True) == 281)
+assert(part_b(test=True) == 2286)
 answer_b = part_b()
-write_solution('day01', 'b', answer_b)
+write_solution('day02', 'b', answer_b)
 puzzle.answer_b = answer_b
