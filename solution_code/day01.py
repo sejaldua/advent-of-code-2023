@@ -1,6 +1,6 @@
 from os import write
 from aocd.models import Puzzle
-from ../utils import get_test_input, write_solution
+from ..utils import get_test_input, write_solution
 
 """
 Day 1: Trebuchet?!
