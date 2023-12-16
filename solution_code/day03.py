@@ -51,8 +51,7 @@ def part_a(test=False):
     return ans
     
 
-# assert(part_a(test=True) == 4361)
-part_a(test=True)
+assert(part_a(test=True) == 4361)
 answer_a = part_a()
 write_solution('day03', 'a', answer_a)
 puzzle.answer_a = answer_a  
@@ -82,7 +81,6 @@ def part_b(test=False):
 
 
 assert(part_b(test=True) == 467835)
-star_indexes = defaultdict(list)
 answer_b = part_b()
 write_solution('day03', 'b', answer_b)
 puzzle.answer_b = answer_b
