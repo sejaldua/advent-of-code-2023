@@ -9,7 +9,7 @@ and keeping the Python chops nice and sharp!
 | :------: | :-------------------: | :--------------: | :--------------: |
 | 01 | [Trebuchet?!](https://adventofcode.com/2023/day/1) | [01](solution_code/day01.py) | ★★ |
 | 02 | [Cube Conundrum](https://adventofcode.com/2023/day/2) | [02](solution_code/day02.py) | ★★ |
-| 03 |  |  | ☆☆ |
+| 03 | [Gear Ratios](https://adventofcode.com/2023/day/3) | [03](solution_code/day03.py) | ★★ |
 | 04 |  |  | ☆☆ |
 | 05 |  |  | ☆☆ |
 | 06 |  |  | ☆☆ |
